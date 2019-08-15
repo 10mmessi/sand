@@ -27,7 +27,10 @@ ru5 = '$randomuser'
 # look for phrase and reply appropriately
 
 for comment in subreddit.stream.comments():
-    if  any(c in comment.body and ("randomcharacter", 'randomleak", "randomboy", "randomtitan", "randomalive", "ramdomgirl", "randomlivingboy", "randomlivinggirl", "randomship", " not in comment.body) for c in (ru1, ru2, ru3, ru4, ru5)):
-         reply = comment.body.replace(ru1,str(random.choice(users))).replace(ru2,str(random.choice(users))).replace(ru3,str(random.choice(users))).replace(ru4,str(random.choice(users))).replace(ru5,str(random.choice(users)))
-          comment.reply(reply)
-          print('posted')
+    if  any(x in comment.body for x in ("randomcharacter", "randomleak", "randomboy", "randomtitan", "randomalive", "ramdomgirl", "randomlivingboy", "randomlivinggirl", "randomship")):
+        pass
+    else:
+        if  any(c in comment.body for c in (ru1, ru2, ru3, ru4, ru5)):
+            reply = comment.body.replace(ru1,str(random.choice(users))).replace(ru2,str(random.choice(users))).replace(ru3,str(random.choice(users))).replace(ru4,str(random.choice(users))).replace(ru5,str(random.choice(users)))
+            comment.reply(reply)
+            print('posted')
